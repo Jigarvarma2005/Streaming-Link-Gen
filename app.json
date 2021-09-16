@@ -1,0 +1,62 @@
+{
+  "name": "Streaming Link",
+  "description": "A telegram bot to genrate direct streaming links",
+  "keywords": [
+    "telegram",
+    "best",
+    "open",
+    "remote",
+    "uploader",
+    "stream",
+    "google",
+    "m3u8",
+    "mpd"
+  ],
+  "success_url": "https://github.com/Jigarvarma2005/Streaming-Link-Gen",
+  "website": "https://github.com/Jigarvarma2005/Streaming-Link-Gen",
+  "repository": "https://github.com/Jigarvarma2005/Streaming-Link-Gen",
+  "env": {
+    "TG_BOT_TOKEN": {
+      "description": "Your bot token, as a string.",
+      "value": ""
+    },
+    "APP_ID": {
+      "description": "Get this value from https://my.telegram.org",
+      "value": ""
+    },
+    "API_HASH": {
+      "description": "Get this value from https://my.telegram.org",
+      "value": ""
+    },
+    "UPDATES_CHANNEL": {
+      "description": "Your updates channnel username",
+      "required": false
+    },
+    "GDRIVE_FOLDER_ID": {
+      "description": "This is the folder ID of the Google Drive Folder to which you want to upload all the telegram media"
+    },
+    "IS_TEAM_DRIVE": {
+      "description": "Set to 'True' if GDRIVE_FOLDER_ID is from a Team Drive else False or Leave it empty.",
+      "required": false,
+      "value": "False"
+    },
+    "USE_SERVICE_ACCOUNTS": {
+      "description": "Whether to use service accounts or not. For this to work see 'Using service accounts' section readme file in repo",
+      "value": "False"
+    },
+    "INDEX_URL": {
+      "description": " Refer to https://github.com/maple3142/GDIndex/ The URL should not have any trailing '/'"
+    }
+  },
+  "addons": [
+  ],
+  "buildpacks": [{
+    "url": "heroku/python"
+  }],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}
