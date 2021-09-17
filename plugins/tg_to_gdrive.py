@@ -25,7 +25,8 @@ async def tg_to_gdrive_upload(bot, update):
         reply_to_message_id=update.message_id
     )
     c_time = time.time()
-    the_real_download_location = await bot.download_media(
+    try:
+       the_real_download_location = await bot.download_media(
         message=update,
         file_name=download_location,
         progress=progress_for_pyrogram,
@@ -35,7 +36,12 @@ async def tg_to_gdrive_upload(bot, update):
             c_time
         )
     )
-    if the_real_download_location is not None:
+    except Exception as e:
+        logger.error(str(e))
+        pass
+    if the_real_download_location is None:
+        return await reply_message.edit_text("File Download Failed")
+    else:
         try:
             await bot.edit_message_text(
                 text=Translation.SAVED_RECVD_DOC_FILE,
@@ -46,7 +52,6 @@ async def tg_to_gdrive_upload(bot, update):
             pass
     download_directory = the_real_download_location
     if os.path.exists(download_directory):
-        end_one = datetime.now()
         up_name = pathlib.PurePath(download_directory).name
         size = get_readable_file_size(get_path_size(download_directory))
         try:
@@ -56,19 +61,19 @@ async def tg_to_gdrive_upload(bot, update):
                 message_id=reply_message.message_id
             )
         except Exception as e:
-            logger.info(str(e))
+            logger.error(str(e))
             pass
         logger.info(f"Upload Name : {up_name}")
         drive = gdriveTools.GoogleDriveHelper(up_name)
         gd_url, index_url = drive.upload(download_directory)
-        button = []
         uri = str_to_b64(index_url)
-        button.append([InlineKeyboardButton(text="Play On Website", url=f"https://stream.jigarvarma.tk/play?id={uri}")])
-        button_markup = InlineKeyboardMarkup(button)
+        url = f"https://stream.jigarvarma.tk/play?id={uri}"
+        button_markup = InlineKeyboardMarkup([[InlineKeyboardButton(text="Play On Website", url=url)]])
         await bot.send_message(
-            text=f"<b>Streaming link Generated</b> \n\n<b>File:</b> {up_name} \n\n<b>Size:</b> {size}",
+            text=f"<b>Streaming link Generated</b> \n\n<b>File:</b> {up_name} \n\n<b>Size:</b> {size}\n\n<b>Link:</b>{url}",
             chat_id=update.chat.id,
             reply_to_message_id=update.message_id,
+            disable_web_page_preview=True,
             reply_markup=button_markup)
         try:
             os.remove(download_directory)
