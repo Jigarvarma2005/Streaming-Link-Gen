@@ -104,7 +104,7 @@ async def input_str(bot,message, msg):
     if len(message.command) <= 1:
         try:
             jv = await message.reply_text(msg)
-            _text = await bot.listen(message.from_user.id, timeout=90)
+            _text = await bot.listen(message.from_user.id, filters=filters.text, timeout=90)
             if _text.text:
                 text = _text.text
             else:
