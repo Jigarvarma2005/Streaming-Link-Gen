@@ -13,7 +13,7 @@ from pyrogram import Client as app
 from config import Config
 from helper_funcs.fsub import handle_force_sub
 
-@app.on_message(pyrogram.filters.private & pyrogram.filters.document | pyrogram.filters.video)
+@app.on_message(pyrogram.filters.private & (pyrogram.filters.document | pyrogram.filters.video))
 async def tg_to_gdrive_upload(bot, update):
     back = await handle_force_sub(bot, update)
     if back == 400:
