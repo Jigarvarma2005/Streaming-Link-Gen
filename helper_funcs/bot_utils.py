@@ -110,9 +110,6 @@ async def input_str(bot,message, msg):
                 if text=="/cancel":
                    await jv.edit("Process Cancelled Successfully")
                    return 404
-                if not text.startswith("http"):
-                   await jv.edit("Send Me a Valid Link")
-                   return 404
             else:
                 return 404
         except TimeoutError:
