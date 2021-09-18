@@ -103,10 +103,13 @@ def b64_to_str(b64: str) -> str:
 async def input_str(bot,message, msg):
     if len(message.command) <= 1:
         try:
-            jv = await message.reply_text(msg)
+            jv = await message.reply_text(msg+"\n\n(You can use /cancel command to cancel the process)")
             _text = await bot.listen(message.from_user.id, filters=filters.text, timeout=90)
             if _text.text:
                 text = _text.text
+                if text=="/cancel":
+                   await jv.edit("Process Cancelled Successfully")
+                   return 404
             else:
                 return 404
         except TimeoutError:
