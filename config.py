@@ -1,5 +1,6 @@
 import os
 
+
 class Config(object):
     # get a token from @BotFather
     TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
@@ -8,10 +9,12 @@ class Config(object):
     API_HASH = os.environ.get("API_HASH", "")
     # Your Updates channel username 
     UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", None)
+    # token.pickle file link
+    TOKEN_PICKLE = os.environ.get("TOKEN_PICKLE", None)
     # the download location, where the HTTP Server runs
     DOWNLOAD_LOCATION = "./DOWNLOADS"
     # Google drive folder id
-    parent_id = os.environ.get("GDRIVE_FOLDER_ID","")
+    parent_id = os.environ.get("GDRIVE_FOLDER_ID", "")
     # Set True is drive folder id is Team Drive
     IS_TEAM_DRIVE = os.environ.get("IS_TEAM_DRIVE", True)
     # Set it True if using Service Account for uploading
