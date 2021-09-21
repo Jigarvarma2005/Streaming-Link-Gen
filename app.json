@@ -1,6 +1,6 @@
 {
   "name": "Streaming Link",
-  "description": "A telegram bot to genrate direct streaming links",
+  "description": "A telegram bot to generate direct streaming links",
   "keywords": [
     "telegram",
     "best",
@@ -29,8 +29,11 @@
       "value": ""
     },
     "UPDATES_CHANNEL": {
-      "description": "Your updates channnel username",
+      "description": "Your updates channel username",
       "required": false
+    },
+    "TOKEN_PICKLE": {
+      "description": "`token.pickle` file link to download & use."
     },
     "GDRIVE_FOLDER_ID": {
       "description": "This is the folder ID of the Google Drive Folder to which you want to upload all the telegram media"
