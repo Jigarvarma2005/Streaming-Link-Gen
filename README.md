@@ -15,7 +15,6 @@ This is a telegram bot writen in python for genrating streaming links
 Deploying is pretty much straight forward and is divided into several steps as follows:
 
 ### Heroku Deploy:
-##### Before deploying must add token.pickle file in repo
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Jigarvarma2005/Streaming-Link-Gen)
 
 # How to get token.pickle file (Recommnded)
