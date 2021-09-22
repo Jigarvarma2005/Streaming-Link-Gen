@@ -5,6 +5,7 @@ import os
 import threading
 import time
 from asyncio import TimeoutError
+from pyrogram import filters
 from base64 import standard_b64encode, standard_b64decode
 
 LOGGER = logging.getLogger(__name__)
