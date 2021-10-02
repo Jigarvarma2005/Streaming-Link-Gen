@@ -76,6 +76,9 @@ python3 add_to_team_drive.py -d SharedTeamDriveSrcID
 #### Support Group
 - [JV Community](https://t.me/jv_community)
 
+#### Bots Updates Channel
+- [Universal Projects](https://t.me/Universal_Projects)
+
 ### Credits
 - [Jigar Varma](https://github.com/jigarvarma2005)
 - [lzzy12](https://github.com/lzzy12)
