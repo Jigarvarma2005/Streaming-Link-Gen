@@ -32,6 +32,10 @@
       "description": "Your updates channel username",
       "required": false
     },
+    "VIDEO_PLAYER_URL": {
+      "description": "Your web video player url check 'https://github.com/Jigarvarma2005/video-player'",
+      "required": false
+    },
     "TOKEN_PICKLE": {
       "description": "`token.pickle` file link to download & use."
     },
