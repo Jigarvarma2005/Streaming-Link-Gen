@@ -10,6 +10,7 @@ This is a telegram bot writen in python for genrating streaming links
 - Stream brightcove video using video id
 - Stream JW Player video using video id
 - Stream Telegram media
+- Stream YouTube video using link
 
 # How to deploy?
 Deploying is pretty much straight forward and is divided into several steps as follows:
