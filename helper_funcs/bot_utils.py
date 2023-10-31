@@ -91,28 +91,25 @@ def readable_time(seconds: int) -> str:
 def str_to_b64(__str: str) -> str:
     str_bytes = __str.encode('ascii')
     bytes_b64 = standard_b64encode(str_bytes)
-    b64 = bytes_b64.decode('ascii')
-    return b64
+    return bytes_b64.decode('ascii')
 
 
 def b64_to_str(b64: str) -> str:
     bytes_b64 = b64.encode('ascii')
     bytes_str = standard_b64decode(bytes_b64)
-    __str = bytes_str.decode('ascii')
-    return __str
+    return bytes_str.decode('ascii')
 
 async def input_str(bot,message, msg):
     if len(message.command) <= 1:
         try:
             jv = await message.reply_text(msg+"\n\n(You can use /cancel command to cancel the process)")
             _text = await bot.listen(message.from_user.id, filters=filters.text, timeout=90)
-            if _text.text:
-                text = _text.text
-                if text=="/cancel":
-                   await jv.edit("Process Cancelled Successfully")
-                   return 404
-            else:
+            if not _text.text:
                 return 404
+            text = _text.text
+            if text=="/cancel":
+               await jv.edit("Process Cancelled Successfully")
+               return 404
         except TimeoutError:
             await jv.edit("I can't wait more for link, send command again to use me.")
             return 404

@@ -40,12 +40,9 @@ def BootUpProcess() -> bool:
 
 if __name__ == "__main__":
     print("Starting ...")
-    success = BootUpProcess()
-    if success:
+    if success := BootUpProcess():
         app.start()
         print("\nBot Started!\n")
         pyrogram.idle()
         app.stop()
-        print("Exiting ...")
-    else:
-        print("Exiting ...")
+    print("Exiting ...")

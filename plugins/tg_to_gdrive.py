@@ -18,7 +18,7 @@ async def tg_to_gdrive_upload(bot, update):
     back = await handle_force_sub(bot, update)
     if back == 400:
         return
-    download_location = Config.DOWNLOAD_LOCATION + "/"
+    download_location = f"{Config.DOWNLOAD_LOCATION}/"
     reply_message = await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.DOWNLOAD_START,
@@ -26,30 +26,28 @@ async def tg_to_gdrive_upload(bot, update):
     )
     c_time = time.time()
     try:
-       the_real_download_location = await bot.download_media(
-        message=update,
-        file_name=download_location,
-        progress=progress_for_pyrogram,
-        progress_args=(
-            Translation.DOWNLOAD_START,
-            reply_message,
-            c_time
+           the_real_download_location = await bot.download_media(
+            message=update,
+            file_name=download_location,
+            progress=progress_for_pyrogram,
+            progress_args=(
+                Translation.DOWNLOAD_START,
+                reply_message,
+                c_time
+            )
         )
-    )
     except Exception as e:
         logger.error(str(e))
-        pass
     if the_real_download_location is None:
         return await reply_message.edit_text("File Download Failed")
-    else:
-        try:
-            await bot.edit_message_text(
-                text=Translation.SAVED_RECVD_DOC_FILE,
-                chat_id=update.chat.id,
-                message_id=reply_message.message_id
-            )
-        except:
-            pass
+    try:
+        await bot.edit_message_text(
+            text=Translation.SAVED_RECVD_DOC_FILE,
+            chat_id=update.chat.id,
+            message_id=reply_message.message_id
+        )
+    except:
+        pass
     download_directory = the_real_download_location
     if os.path.exists(download_directory):
         up_name = pathlib.PurePath(download_directory).name
@@ -62,7 +60,6 @@ async def tg_to_gdrive_upload(bot, update):
             )
         except Exception as e:
             logger.error(str(e))
-            pass
         logger.info(f"Upload Name : {up_name}")
         drive = gdriveTools.GoogleDriveHelper(up_name)
         gd_url, index_url = drive.upload(download_directory)

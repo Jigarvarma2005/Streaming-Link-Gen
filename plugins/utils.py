@@ -45,7 +45,7 @@ async def brightcove(bot, update):
     uri = await input_str(bot, update,msg)
     if uri == 404:
         return
-    uri = f"https://{Config.VIDEO_PLAYER_URL}/brightcove?id=" + uri
+    uri = f"https://{Config.VIDEO_PLAYER_URL}/brightcove?id={uri}"
     await update.reply_text(text="Use the below url to stream in website",
                             reply_markup=InlineKeyboardMarkup(
                                     [[
@@ -62,7 +62,7 @@ async def jwplayer_(bot, update):
     uri = await input_str(bot, update,msg)
     if uri == 404:
         return
-    uri = f"https://{Config.VIDEO_PLAYER_URL}/jw?id=" + uri
+    uri = f"https://{Config.VIDEO_PLAYER_URL}/jw?id={uri}"
     await update.reply_text(text="Use the below url to stream in website",
                             reply_markup=InlineKeyboardMarkup(
                                     [[
@@ -79,7 +79,7 @@ async def yt__(bot, update):
     uri = await input_str(bot, update,msg)
     if uri == 404:
         return
-    uri = f"https://{Config.VIDEO_PLAYER_URL}/yt?id=" + uri
+    uri = f"https://{Config.VIDEO_PLAYER_URL}/yt?id={uri}"
     await update.reply_text(text="Use the below url to stream in website",
                             reply_markup=InlineKeyboardMarkup(
                                     [[
@@ -96,7 +96,7 @@ async def m3u8_(bot, update):
     uri = await input_str(bot, update,msg)
     if uri == 404:
         return
-    uri = f"https://{Config.VIDEO_PLAYER_URL}/m3u8?id=" + uri
+    uri = f"https://{Config.VIDEO_PLAYER_URL}/m3u8?id={uri}"
     await update.reply_text(text="Use the below url to stream in website",
                             reply_markup=InlineKeyboardMarkup(
                                     [[
@@ -113,7 +113,7 @@ async def mpd_(bot, update):
     uri = await input_str(bot, update,msg)
     if uri == 404:
         return
-    uri = f"https://{Config.VIDEO_PLAYER_URL}/mpd?id=" + uri
+    uri = f"https://{Config.VIDEO_PLAYER_URL}/mpd?id={uri}"
     await update.reply_text(text="Use the below url to stream in website",
                             reply_markup=InlineKeyboardMarkup(
                                     [[
@@ -130,7 +130,7 @@ async def direct_player_(bot, update):
     uri = await input_str(bot, update,msg)
     if uri == 404:
         return
-    uri = f"https://{Config.VIDEO_PLAYER_URL}/play?id=" + uri
+    uri = f"https://{Config.VIDEO_PLAYER_URL}/play?id={uri}"
     await update.reply_text(text="Use the below url to stream in website",
                             reply_markup=InlineKeyboardMarkup(
                                     [[
